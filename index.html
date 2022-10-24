@@ -88,8 +88,21 @@
         loadImages();
         setInterval(update, 1000 / 144);
         setInterval(createUfos, 5000);
+        setInterval(checkForCollision, 1000 / 25);
         draw();
         // calculate
+      }
+
+      function checkForCollision(){
+        ufos.forEach((ufo) => {
+          if(rocket.x + rocket.width > ufo.x 
+          && rocket.y + rocket.height > ufo.y
+          && rocket.x < ufo.x 
+          && rocket.y < ufo.y
+          ) {
+            console.log(`Collision`)
+          }
+        })
       }
 
       function createUfos() {
@@ -102,12 +115,15 @@
           img: new Image(),
         };
         ufo.img.src = ufo.src; //Ufo-Bild wird geladen
+        ufo.y = getRndInteger(10, window.innerHeight - 10)
         ufos.push(ufo);
       }
 
-      function update() {
-        let isOutsideBorder = isOutsideBorder()
-        if(isOutsideBorder == false) return        
+      function getRndInteger(min, max) {
+      return Math.floor(Math.random() * (max - min) ) + min;
+      }
+
+      function update() {    
 
         if (KEY_UP) {
           rocket.y -= 4;
