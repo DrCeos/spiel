@@ -48,34 +48,34 @@
 
       document.onkeydown = function (e) {
         console.log(e.keyCode);
-        if (e.keyCode == 32) {
+        if (e.keyCode == KeyboardEvent.VK_SPACE) {
           // Leertaste gedrückt
           KEY_SPACE = true;
         }
 
-        if (e.keyCode == 38) {
+        if (e.keyCode == KeyboardEvent.VK_UP) {
           // Nach oben gedrückt
           KEY_UP = true;
         }
 
-        if (e.keyCode == 40) {
+        if (e.keyCode == KeyboardEvent.VK_DOWN) {
           // Nach unten gedrückt
           KEY_DOWN = true;
         }
       };
 
       document.onkeyup = function (e) {
-        if (e.keyCode == 32) {
+        if (e.keyCode == KeyboardEvent.VK_SPACE) {
           // Leertaste loslassen
           KEY_SPACE = false;
         }
 
-        if (e.keyCode == 38) {
+        if (e.keyCode == KeyboardEvent.VK_UP) {
           // Nach oben loslassen
           KEY_UP = false;
         }
 
-        if (e.keyCode == 40) {
+        if (e.keyCode == KeyboardEvent.VK_DOWN) {
           // Nach unten loslassen
           KEY_DOWN = false;
         }
@@ -119,6 +119,10 @@
           ufo.x -= 4;
         });
       } // lol
+
+      function isOutsideBorder() {
+        return rocket.y > 0 && rocket.y + rocket.height < window.innerHeight;
+      }
 
       function loadImages() {
         backgroundImage.src = `img/background.jpg`;
