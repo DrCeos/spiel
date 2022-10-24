@@ -106,6 +106,9 @@
       }
 
       function update() {
+        let isOutsideBorder = isOutsideBorder()
+        if(isOutsideBorder == false) return        
+
         if (KEY_UP) {
           rocket.y -= 4;
         }
