@@ -47,35 +47,34 @@
       let ufos = [];
 
       document.onkeydown = function (e) {
-        console.log(KeyboardEvent.VK_SPACE);
-        if (e.keyCode == KeyboardEvent.VK_SPACE) {
+        if (e.keyCode == 32) {
           // Leertaste gedrückt
           KEY_SPACE = true;
         }
 
-        if (e.keyCode == KeyboardEvent.VK_UP) {
+        if (e.keyCode == 38) {
           // Nach oben gedrückt
           KEY_UP = true;
         }
 
-        if (e.keyCode == KeyboardEvent.VK_DOWN) {
+        if (e.keyCode == 40) {
           // Nach unten gedrückt
           KEY_DOWN = true;
         }
       };
 
       document.onkeyup = function (e) {
-        if (e.keyCode == KeyboardEvent.VK_SPACE) {
+        if (e.keyCode == 32) {
           // Leertaste loslassen
           KEY_SPACE = false;
         }
 
-        if (e.keyCode == KeyboardEvent.VK_UP) {
+        if (e.keyCode == 38) {
           // Nach oben loslassen
           KEY_UP = false;
         }
 
-        if (e.keyCode == KeyboardEvent.VK_DOWN) {
+        if (e.keyCode == 40) {
           // Nach unten loslassen
           KEY_DOWN = false;
         }
@@ -95,7 +94,7 @@
 
       function createUfos() {
         let ufo = {
-          x: 5000,
+          x: 4000,
           y: 200,
           width: 100,
           height: 40,
