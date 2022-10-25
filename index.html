@@ -89,7 +89,7 @@
         setInterval(checkForCollision, 1000 / 144);
         setInterval(checkForShoot, 1000 / 144);
         setInterval(checkForBoom, 1000 / 144)
-        setInterval(resetShootInterval, 500)
+        setInterval(resetShootInterval, 250)
         draw();
         // calculate
       }
@@ -134,8 +134,8 @@
           let shoot = {
             x: rocket.x + 140,
             y: rocket.y + 27,
-            width: 20,
-            height: 4,
+            width: 60,
+            height: 12,
             src: "img/shoot.png",
             img: new Image(),
           };
