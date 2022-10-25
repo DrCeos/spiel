@@ -123,12 +123,12 @@
       function update() {    
 
         if (KEY_UP) {
-          if(rocket.y <= 10) return
+          if(rocket.y <= 10) break;
           rocket.y -= 4;
         }
 
         if (KEY_DOWN) {
-          if(rocket.y + 60 > window.innerHeight) return
+          if(rocket.y + 60 > window.innerHeight) break;
           rocket.y += 4;
         }
 
