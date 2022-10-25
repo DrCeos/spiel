@@ -148,6 +148,10 @@
           ufo.x -= 2;
         });
 
+        shoots.forEach(function (shoot){
+          shoot.x += 6;
+        })
+
         if (KEY_UP) {
           if(rocket.y <= 10) return;
           rocket.y -= 4;
