@@ -22,10 +22,6 @@
         padding: 0;
       }
 
-      .fill {
-        height: 100vh;
-        width: 100vw;
-      }
     </style>
 
     <script>
@@ -100,7 +96,7 @@
           && rocket.x < ufo.x 
           && rocket.y < ufo.y
           ) {
-            rocket.img.src ="img/boom.jpg";
+            rocket.img.src ="img/boom.png";
             console.log(`Collision`)
           }
         })
@@ -132,7 +128,7 @@
         }
 
         if (KEY_DOWN) {
-          console.log(window.innerHeight, rocket.y)
+          if(rocket.y + 60 > window.innerHeight) return
           rocket.y += 4;
         }
 
@@ -175,6 +171,6 @@
     </script>
   </head>
   <body onload="startGame()">
-    <canvas id="canvas" class="fill"> </canvas>
+    <canvas id="canvas"> </canvas>
   </body>
 </html>
