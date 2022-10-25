@@ -31,6 +31,7 @@
       let ctx;
       let backgroundImage = new Image();
       let shootInterval
+      let points = 0
 
       let rocket = {
         x: 100,
@@ -127,8 +128,14 @@
             ufo.y < shoot.y
           ){
             ufo.img.src = "img/boom.png";
+
             setTimeout(() => {
-              ufos = ufos.filter((u) => u != ufo)
+              let tempUfos = ufos.filter((u) => {
+                return u != ufo
+              })
+              console.log(ufos.length, tempUfos.length)
+              points += ufos.length - tempUfos.length;
+              ufos = tempUfos
             }, 500)
 
           }
@@ -172,6 +179,9 @@
       }
 
       function update() {
+        //Punkte hinzufügen
+
+
         ufos.forEach(function (ufo) {
           ufo.x -= 2;
         });
@@ -223,7 +233,8 @@
         shoots.forEach(function (shoot) {
           ctx.drawImage(shoot.img, shoot.x, shoot.y, shoot.width, shoot.height);
         });
-        ctx.fillText("Hallo Benedikt", 20, 20)
+        let textWidth = ctx.measureText(`Punkte: ${points}`).width
+        ctx.fillText(`Punkte: ${points}`, window.innerWidth / 2 - (textWidth / 2), 50)
         requestAnimationFrame(draw);
       }
     </script>
@@ -232,3 +243,4 @@
     <canvas id="canvas"> </canvas>
   </body>
 </html>
+
