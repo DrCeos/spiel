@@ -21,7 +21,6 @@
         margin: 0;
         padding: 0;
       }
-
     </style>
 
     <script>
@@ -92,37 +91,51 @@
         // calculate
       }
 
-      function checkForCollision(){
+      function checkForCollision() {
         ufos.forEach((ufo) => {
-          if(rocket.x + rocket.width > ufo.x 
-          && rocket.y + rocket.height > ufo.y
-          && rocket.x < ufo.x 
-          && rocket.y < ufo.y
+          if (
+            rocket.x + rocket.width > ufo.x &&
+            rocket.y + rocket.height > ufo.y &&
+            rocket.x < ufo.x &&
+            rocket.y < ufo.y
           ) {
-            rocket.img.src ="img/boom.png";
-            console.log(`Collision`)
-            ufos= ufos.filter(u => u != ufo);
+            rocket.img.src = "img/boom.png";
+            console.log(`Collision`);
+            ufos = ufos.filter((u) => u != ufo);
+          }
+        });
+      }
+
+      function checkForBoom() {
+        shoots.forEach((shoot) => {
+          ufos.forEach((ufo) => {
+          if (
+            ufo.x + ufo.width > shoot.x &&
+            ufo.y + ufo.height > shoot.y &&
+            ufo.x < shoot.x &&
+            ufo.y < shoot.y
+          ){
+            ufo.img.src = "img/boom.png";
           }
         })
+      })
       }
 
       function checkForShoot() {
         if (KEY_SPACE) {
           let shoot = {
             x: rocket.x + 140,
-            y :rocket.y + 27,
+            y: rocket.y + 27,
             width: 20,
             height: 4,
             src: "img/shoot.png",
-            img: new Image()
+            img: new Image(),
           };
           shoot.img.src = shoot.src;
 
           shoots.push(shoot);
         }
       }
-
-      
 
       function createUfos() {
         let ufo = {
@@ -134,34 +147,32 @@
           img: new Image(),
         };
         ufo.img.src = ufo.src; //Ufo-Bild wird geladen
-        ufo.y = getRndInteger(10, window.innerHeight - 10)
+        ufo.y = getRndInteger(10, window.innerHeight - 10);
         ufos.push(ufo);
       }
 
       function getRndInteger(min, max) {
-      return Math.floor(Math.random() * (max - min) ) + min;
+        return Math.floor(Math.random() * (max - min)) + min;
       }
 
-      function update() {    
-
+      function update() {
         ufos.forEach(function (ufo) {
           ufo.x -= 2;
         });
 
-        shoots.forEach(function (shoot){
+        shoots.forEach(function (shoot) {
           shoot.x += 6;
-        })
+        });
 
         if (KEY_UP) {
-          if(rocket.y <= 10) return;
+          if (rocket.y <= 10) return;
           rocket.y -= 4;
         }
 
         if (KEY_DOWN) {
-          if(rocket.y + 60 > window.innerHeight) return;
+          if (rocket.y + 60 > window.innerHeight) return;
           rocket.y += 4;
         }
-
       } // lol
 
       function isOutsideBorder() {
@@ -195,7 +206,7 @@
         });
         shoots.forEach(function (shoot) {
           ctx.drawImage(shoot.img, shoot.x, shoot.y, shoot.width, shoot.height);
-        })
+        });
         requestAnimationFrame(draw);
       }
     </script>
