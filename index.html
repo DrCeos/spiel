@@ -42,6 +42,8 @@
 
       let ufos = [];
 
+      let shoots = [];
+
       document.onkeydown = function (e) {
         if (e.keyCode == 32) {
           // Leertaste gedrückt
@@ -84,7 +86,8 @@
         loadImages();
         setInterval(update, 1000 / 144);
         setInterval(createUfos, 5000);
-        setInterval(checkForCollision, 1000 / 25);
+        setInterval(checkForCollision, 1000 / 144);
+        setinterval(checkForShoot, 1000 / 144);
         draw();
         // calculate
       }
@@ -98,10 +101,28 @@
           ) {
             rocket.img.src ="img/boom.png";
             console.log(`Collision`)
-            ufos.filter(u => u != ufo)
+            ufos= ufos.filter(u => u != ufo);
           }
         })
       }
+
+      function checkForShoot() {
+        if (KEY_SPACE) {
+          let shoot = {
+            x: rocket.x + 110,
+            y :rocket.y + 22,
+            width: 20,
+            height: 4,
+            src: "img/shoot.png",
+            img: new Image()
+          };
+          shoot.img.src = shoot.src;
+
+          shoots.push(shoot);
+        }
+      }
+
+      
 
       function createUfos() {
         let ufo = {
@@ -124,7 +145,7 @@
       function update() {    
 
         ufos.forEach(function (ufo) {
-          ufo.x -= 4;
+          ufo.x -= 2;
         });
 
         if (KEY_UP) {
@@ -168,6 +189,9 @@
         ufos.forEach(function (ufo) {
           ctx.drawImage(ufo.img, ufo.x, ufo.y, ufo.width, ufo.height);
         });
+        shoots.forEach(function (shoot) {
+          ctx.drawImage(shoot.img, shoot.x, shoot.y, shoot.width, shoot.height);
+        })
         requestAnimationFrame(draw);
       }
     </script>
