@@ -85,7 +85,7 @@
         ctx = canvas.getContext(`2d`);
         ctx.lineWidth = 10
         ctx.fillStyle = "white"
-        ctx.font("35px arial")
+        ctx.font = "35px arial"
 
         loadImages();
         setInterval(update, 1000 / 144);
