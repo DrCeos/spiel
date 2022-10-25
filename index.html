@@ -123,6 +123,7 @@
             ufo.y < shoot.y
           ){
             ufo.img.src = "img/boom.png";
+            ufos = ufos.filter((u) => u != ufo)
           }
         })
       })
