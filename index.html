@@ -130,6 +130,7 @@
         }
 
         if (KEY_DOWN) {
+          if(rocket.y <= 0) return
           rocket.y += 4;
         }
 
