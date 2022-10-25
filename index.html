@@ -83,6 +83,10 @@
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         ctx = canvas.getContext(`2d`);
+        ctx.lineWidth = 10
+        ctx.fillStyle = "white"
+        ctx.font("35px arial")
+
         loadImages();
         setInterval(update, 1000 / 144);
         setInterval(createUfos, 5000);
@@ -219,6 +223,7 @@
         shoots.forEach(function (shoot) {
           ctx.drawImage(shoot.img, shoot.x, shoot.y, shoot.width, shoot.height);
         });
+        ctx.fillText("Hallo Benedikt", 20, 20)
         requestAnimationFrame(draw);
       }
     </script>
