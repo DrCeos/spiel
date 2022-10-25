@@ -30,6 +30,7 @@
       let canvas;
       let ctx;
       let backgroundImage = new Image();
+      let shootInterval
 
       let rocket = {
         x: 100,
@@ -88,6 +89,7 @@
         setInterval(checkForCollision, 1000 / 144);
         setInterval(checkForShoot, 1000 / 144);
         setInterval(checkForBoom, 1000 / 144)
+        setInterval(resetShootInterval, 500)
         draw();
         // calculate
       }
@@ -107,6 +109,10 @@
         });
       }
 
+      function resetShootInterval() {
+        shootInterval == false
+      }
+
       function checkForBoom() {
         shoots.forEach((shoot) => {
           ufos.forEach((ufo) => {
@@ -123,6 +129,7 @@
       }
 
       function checkForShoot() {
+        if(shootInterval == true) return
         if (KEY_SPACE) {
           let shoot = {
             x: rocket.x + 140,
@@ -133,8 +140,8 @@
             img: new Image(),
           };
           shoot.img.src = shoot.src;
-
           shoots.push(shoot);
+          shootInterval = true
         }
       }
 
