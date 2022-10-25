@@ -98,6 +98,7 @@
           ) {
             rocket.img.src ="img/boom.png";
             console.log(`Collision`)
+            ufos.filter(u => u != ufo)
           }
         })
       }
@@ -122,19 +123,20 @@
 
       function update() {    
 
+        ufos.forEach(function (ufo) {
+          ufo.x -= 4;
+        });
+
         if (KEY_UP) {
-          if(rocket.y <= 10) break;
+          if(rocket.y <= 10) return;
           rocket.y -= 4;
         }
 
         if (KEY_DOWN) {
-          if(rocket.y + 60 > window.innerHeight) break;
+          if(rocket.y + 60 > window.innerHeight) return;
           rocket.y += 4;
         }
 
-        ufos.forEach(function (ufo) {
-          ufo.x -= 4;
-        });
       } // lol
 
       function isOutsideBorder() {
