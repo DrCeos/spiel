@@ -100,7 +100,7 @@
           && rocket.x < ufo.x 
           && rocket.y < ufo.y
           ) {
-            rocket.img.src ="boom.jpg"
+            rocket.img.src ="boom.jpg";
             console.log(`Collision`)
           }
         })
@@ -132,7 +132,6 @@
 
         if (KEY_DOWN) {
           console.log(rocket.y)
-          if(rocket.y < 0) return
           rocket.y += 4;
         }
 
