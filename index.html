@@ -127,11 +127,11 @@
       function update() {    
 
         if (KEY_UP) {
+          if(rocket.y <= 10) return
           rocket.y -= 4;
         }
 
         if (KEY_DOWN) {
-          console.log(rocket.y)
           rocket.y += 4;
         }
 
